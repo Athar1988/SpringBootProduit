@@ -36,18 +36,11 @@ public class ProduitController {
 	
 	
 	@RequestMapping(value="/supprimer",method=RequestMethod.GET)
-	public String supprimer(
-			Model model,
-			@RequestParam(name="ref", defaultValue="0") Long ref,
+	public String supprimer(Long ref,
 			@RequestParam(name="page", defaultValue="0") int page,
 			@RequestParam(name="mc", defaultValue="") String motCle) {
 		iproduitrepository.deleteById(ref);
-		Page<Produit> PageProduit=  iproduitrepository.findByDesignationContains(motCle, PageRequest.of(page, 5));
-		model.addAttribute("listeproduit",PageProduit.getContent());
-		model.addAttribute("pages", new int[PageProduit.getTotalPages()]);
-		model.addAttribute("currentpage", page);
-		
-		return "Produit";
+		return "redirect:/index?page="+page+"&mc="+motCle;
 	}
 	
 	

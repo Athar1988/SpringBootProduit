@@ -34,7 +34,7 @@
 						<td th:text="${p.designation}"></td>
 						<td th:text="${p.prix}"></td>
 						<td th:text="${p.quantite}"></td>
-						<td><a th:href="@{/supprimer(ref=${p.reference},page=${currentpage})}">Supprimer</a></td>
+						<td><a class="btn btn-danger" onclick="return confirm('vous-etes sur de supprimer cet produit')" th:href="@{/supprimer(ref=${p.reference},page=${currentpage},mc=${motcle})}">Supprimer</a></td>
 					</tr>
 				</table>
 			<ul class="nav nav-pills">
