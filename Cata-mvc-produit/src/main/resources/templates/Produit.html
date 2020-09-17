@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+
+</head>
+<body>
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Liste des produits</div>
+			<!-- Bloc formulaire du recherche -->
+			<div class="panel-body">
+			<form th:action="@{/index}"   method="get">
+			<label>Mot clé</label>
+			<input type="text" name="mc" th:value="${motcle}">
+			<button type="submit" class="btn ptn-primary">Chercher</button>
+			</form>
+			</div>
+			<!-- Bloc du tableau d'affichage -->
+			<div class="panel-body">
+				<table class="table">
+					<tr>
+						<th>ID</th>
+						<th>Designation</th>
+						<th>Prix</th>
+						<th>Quantite</th>
+					</tr>
+					<tr th:each="p:${listeproduit}">
+						<td th:text="${p.reference}"></td>
+						<td th:text="${p.designation}"></td>
+						<td th:text="${p.prix}"></td>
+						<td th:text="${p.quantite}"></td>
+						<td><a th:href="@{/supprimer(ref=${p.reference},page=${currentpage})}">Supprimer</a></td>
+					</tr>
+				</table>
+			<ul class="nav nav-pills">
+				<li th:class="${currentpage==status.index}?'active':''"  th:each="pg,status:${pages}">
+				<a th:href="@{/index(page=${status.index},mc=${motcle})}"th:text="${status.index}"></a>
+			</li></ul>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
