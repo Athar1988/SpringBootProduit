@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 
@@ -19,8 +21,11 @@ public class Produit implements Serializable{
 	@Column(name="reference")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long reference;
+	@NotNull
+	@Size(min = 5, max = 70)
 	@Column(name="designation")
 	private String designation;
+	@DecimalMin("100")
 	@Column(name="prix")
 	private double prix;
 	@Column(name="quantite")

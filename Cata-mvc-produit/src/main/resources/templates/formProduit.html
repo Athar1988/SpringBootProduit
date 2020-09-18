@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorate="layout">
+<head>
+<meta charset="utf-8" >
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+
+ <div layout:fragment="content1">
+ <div class="col-md-6" >
+ <div class="panel panel-default">
+ <div class="panel-heading">Nouveau Produit</div>
+ <div class="panel-body"> 
+ <form th:action="@{/save}"  method="post">
+<div class="form-groupe">
+<label class="control-label">Designation</label>
+<label><input class="from-control" type="text" name="designation" th:value="${produit.designation}"></label>
+<span th:errors="${produit.designation}"  class="text-danger"></span>
+</div>
+
+<div class="form-groupe">
+<label class="control-label">Prix</label>
+<label><input class="from-control" type="text" name="prix"  th:value="${produit.prix}"></label>
+<span th:errors="${produit.prix}"  class="text-danger"></span>
+</div>
+
+
+<div class="form-groupe">
+<label class="control-label">Quantite</label>
+<label><input class="from-control" type="text" name="Quantite"  th:value="${produit.Quantite}"></label>
+<span th:errors="${produit.Quantite}"  class="text-danger"></span>
+</div>
+<input  name="mode" type="hidden" value="ajoute">
+<input type="submit"  class="btn btn-primary" value="Ajoute">
+</form>
+ </div>
+  </div>
+</div> 
+</div> 
+</body>
+</html>
