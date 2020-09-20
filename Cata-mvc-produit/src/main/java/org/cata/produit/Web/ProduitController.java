@@ -24,6 +24,22 @@ public class ProduitController {
 	@Autowired
 	private IProduitRepository iproduitrepository;
 	
+	@RequestMapping(value="/login")
+	 public String login() {
+		 return "login";
+	 }
+	
+	@RequestMapping(value="/403")
+	 public String accessDenied() {
+		 return "403";
+	 }
+	
+	@RequestMapping(value="/")
+	public String authentification() {
+		return "redirect:/index";
+	}
+	
+	
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public String chercher(
 			Model model,
